@@ -1,0 +1,8 @@
+# Read your SystemVerilog RTL files
+read_verilog -sv rtl/rv32i_top.sv
+
+# Elaborate design hierarchy with top module
+synth -top rv32i_top
+
+# Optional: Write out a structural netlist
+write_json rv32i_synth.json

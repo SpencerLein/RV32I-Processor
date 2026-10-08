@@ -1,0 +1,81 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+S_000001d54174bc40 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_000001d54174bdd0 .scope module, "tb_rv32i_top" "tb_rv32i_top" 3 1;
+ .timescale 0 0;
+L_000001d541797210 .functor BUFZ 32, L_000001d5417e09d0, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v000001d5417946c0_0 .net *"_ivl_0", 31 0, L_000001d5417e09d0;  1 drivers
+v000001d541794760_0 .net *"_ivl_3", 29 0, L_000001d5417e0f70;  1 drivers
+v000001d541794800_0 .var "clk", 0 0;
+v000001d5417948a0_0 .net "dmem_addr", 31 0, v000001d541796c20_0;  1 drivers
+v000001d541794940_0 .var "dmem_rdata", 31 0;
+v000001d5417949e0_0 .net "dmem_wdata", 31 0, v000001d541746280_0;  1 drivers
+v000001d541794a80_0 .net "dmem_we", 0 0, v000001d541746320_0;  1 drivers
+v000001d5417e0bb0 .array "imem", 255 0, 31 0;
+v000001d5417e0570_0 .net "imem_addr", 31 0, v000001d5417463c0_0;  1 drivers
+v000001d5417e0ed0_0 .net "imem_rdata", 31 0, L_000001d541797210;  1 drivers
+v000001d5417e0930_0 .var "rst_n", 0 0;
+L_000001d5417e09d0 .array/port v000001d5417e0bb0, L_000001d5417e0f70;
+L_000001d5417e0f70 .part v000001d5417463c0_0, 2, 30;
+S_000001d541746050 .scope module, "dut" "rv32i_top" 3 21, 4 1 0, S_000001d54174bdd0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "rst_n";
+    .port_info 2 /OUTPUT 32 "imem_addr";
+    .port_info 3 /INPUT 32 "imem_rdata";
+    .port_info 4 /OUTPUT 1 "dmem_we";
+    .port_info 5 /OUTPUT 32 "dmem_addr";
+    .port_info 6 /OUTPUT 32 "dmem_wdata";
+    .port_info 7 /INPUT 32 "dmem_rdata";
+v000001d541746740_0 .net "clk", 0 0, v000001d541794800_0;  1 drivers
+v000001d541796c20_0 .var "dmem_addr", 31 0;
+v000001d5417461e0_0 .net "dmem_rdata", 31 0, v000001d541794940_0;  1 drivers
+v000001d541746280_0 .var "dmem_wdata", 31 0;
+v000001d541746320_0 .var "dmem_we", 0 0;
+v000001d5417463c0_0 .var "imem_addr", 31 0;
+v000001d541746460_0 .net "imem_rdata", 31 0, L_000001d541797210;  alias, 1 drivers
+v000001d541794620_0 .net "rst_n", 0 0, v000001d5417e0930_0;  1 drivers
+    .scope S_000001d54174bdd0;
+T_0 ;
+    %delay 5, 0;
+    %load/vec4 v000001d541794800_0;
+    %inv;
+    %store/vec4 v000001d541794800_0, 0, 1;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_000001d54174bdd0;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d541794800_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d5417e0930_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d5417e0930_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_000001d54174bdd0;
+T_2 ;
+    %vpi_call/w 3 48 "$dumpfile", "sim/tb_rv32i_top.vcd" {0 0 0};
+    %vpi_call/w 3 49 "$dumpvars", 32'sb00000000000000000000000000000000, S_000001d54174bdd0 {0 0 0};
+    %vpi_call/w 3 52 "$readmemh", "imem.hex", v000001d5417e0bb0 {0 0 0};
+    %delay 1000, 0;
+    %vpi_call/w 3 55 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "sim/tb_rv32i_top.sv";
+    "rtl/rv32i_top.sv";

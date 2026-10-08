@@ -1,0 +1,40 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+S_00000260617f6160 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_00000260617f62f0 .scope module, "rv32i_top" "rv32i_top" 3 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "rst_n";
+    .port_info 2 /OUTPUT 32 "imem_addr";
+    .port_info 3 /INPUT 32 "imem_rdata";
+    .port_info 4 /OUTPUT 32 "dmem_we";
+    .port_info 5 /OUTPUT 32 "dmem_addr";
+    .port_info 6 /OUTPUT 32 "dmem_wdata";
+    .port_info 7 /INPUT 32 "dmem_rdata";
+o0000026061846fd8 .functor BUFZ 1, C4<z>; HiZ drive
+v00000260617fa6d0_0 .net "clk", 0 0, o0000026061846fd8;  0 drivers
+v000002606188bc40_0 .var "dmem_addr", 31 0;
+o0000026061847038 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v000002606188bce0_0 .net "dmem_rdata", 31 0, o0000026061847038;  0 drivers
+v000002606188bd80_0 .var "dmem_wdata", 31 0;
+v000002606188be20_0 .var "dmem_we", 31 0;
+v000002606188bec0_0 .var "imem_addr", 31 0;
+o00000260618470f8 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v00000260617fe3e0_0 .net "imem_rdata", 31 0, o00000260618470f8;  0 drivers
+o0000026061847128 .functor BUFZ 1, C4<z>; HiZ drive
+v00000260617fe480_0 .net "rst_n", 0 0, o0000026061847128;  0 drivers
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "-";
+    "rtl/rv32i_top.sv";
